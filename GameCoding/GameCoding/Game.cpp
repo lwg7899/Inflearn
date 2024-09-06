@@ -24,7 +24,7 @@ void Game::Init(HWND hwnd)
 	//CreateInputLayout();
 	//CreatePS();
 }
-
+*/
 void Game::Update()
 {
 
