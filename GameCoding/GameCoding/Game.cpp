@@ -21,6 +21,7 @@ void Game::Init(HWND hwnd)
 	CreateRenderTargetView();
 	SetViewport();
 
+
 	//CreateGeometry();
 	//CreateVS();
 	//CreateInputLayout();
