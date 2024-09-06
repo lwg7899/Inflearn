@@ -3,12 +3,10 @@
 
 Game::Game()
 {
-
 }
 
 Game::~Game()
 {
-
 }
 
 void Game::Init(HWND hwnd)
@@ -20,7 +18,6 @@ void Game::Init(HWND hwnd)
 	CreateDeviceAndSwapChain();
 	CreateRenderTargetView();
 	SetViewport();
-
 
 	//CreateGeometry();
 	//CreateVS();
