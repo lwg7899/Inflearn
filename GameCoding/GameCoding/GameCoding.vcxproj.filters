@@ -22,6 +22,9 @@
     <Filter Include="소스 파일\99.Header\Andromeda">
       <UniqueIdentifier>{a15f098e-6b8f-4542-894c-63835f53a397}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\98.Shaders">
+      <UniqueIdentifier>{78b0fdb6-f46a-41d3-85c9-46d8a10eb5d0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -75,5 +78,10 @@
     <ClCompile Include="pch.cpp">
       <Filter>소스 파일\99.Header</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Default.hlsl">
+      <Filter>소스 파일\98.Shaders</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>
