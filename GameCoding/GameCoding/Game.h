@@ -4,74 +4,83 @@
 class Game
 {
 public:
-	Game();
-	~Game();
+		Game();
+		~Game();
 
 public:
-	void Init(HWND hwnd);
-	void Update();
-	void Render();
+		void Init(HWND hwnd);
+		void Update();
+		void Render();
 
 private:
-	void RenderBegin();
-	void RenderEnd();
+		void RenderBegin();
+		void RenderEnd();
 
 private:
-	void CreateDeviceAndSwapChain();
-	void CreateRenderTargetView();
-	void SetViewport();
+		void CreateDeviceAndSwapChain();
+		void CreateRenderTargetView();
 
 private:
-	void CreateGeometry();
-	void CreateInputLayout();
-	void CreateVS();
-	void CreatePS();
+		void CreateGeometry();
+		void CreateInputLayout();
+		void CreateVS();
+		void CreatePS();
 
-	void CreateSRV();
-	void CreateConstantBuffer();
+		void CreateRasterizerState();
+		void CreateSamplerState();
+		void CreateBlendState();
 
-	void LoadShaderFromFile(const wstring& path, const string& name, const string& version, ComPtr<ID3DBlob>& blob);
+		void SetViewport();
 
-private:
-	HWND   _hwnd   = nullptr;
-	uint32 _width  = 0;
-	uint32 _height = 0;
+		void CreateSRV();
 
-private:
-	// Device & SwapChain
-	ComPtr<ID3D11Device> _device = nullptr;
-	ComPtr<ID3D11DeviceContext> _deviceContext = nullptr;
-	ComPtr<IDXGISwapChain> _swapChain = nullptr;
+		void CreateConstantBuffer();
 
-	// RTV
-	ComPtr<ID3D11RenderTargetView> _renderTargetView;
-
-	// Misc
-	D3D11_VIEWPORT _viewport = {0};
-	float _clearColor[4] = { 0.f, 0.f, 0.f, 0.f };
+		void LoadShaderFromFile(const wstring& path, const string& name, const string& version, ComPtr<ID3DBlob>& blob);
 
 private:
-	// Geometry
-	vector<Vertex> _vertices;
-	ComPtr<ID3D11Buffer> _vertexBuffer = nullptr;
-	ComPtr<ID3D11InputLayout> _inputLayout = nullptr;
+		HWND   _hwnd = nullptr;
+		uint32 _width = 0;
+		uint32 _height = 0;
 
-	vector<uint32> _indices;
-	ComPtr<ID3D11Buffer> _indexBuffer = nullptr;
+private:
+		// Device & SwapChain
+		ComPtr<ID3D11Device> _device = nullptr;
+		ComPtr<ID3D11DeviceContext> _deviceContext = nullptr;
+		ComPtr<IDXGISwapChain> _swapChain = nullptr;
 
+		// RTV
+		ComPtr<ID3D11RenderTargetView> _renderTargetView;
 
-	// VS
-	ComPtr<ID3D11VertexShader> _vertexShader = nullptr;
-	ComPtr<ID3DBlob> _vsBlob = nullptr;
+		// Misc
+		D3D11_VIEWPORT _viewport = { 0 };
+		float _clearColor[4] = { 0.f, 0.f, 0.f, 0.f };
 
-	// PS
-	ComPtr<ID3D11PixelShader> _pixelShader = nullptr;
-	ComPtr<ID3DBlob> _psBlob = nullptr;
+private:
+		// Geometry
+		vector<Vertex> _vertices;
+		ComPtr<ID3D11Buffer> _vertexBuffer = nullptr;
+		ComPtr<ID3D11InputLayout> _inputLayout = nullptr;
 
-	//SRV
-	ComPtr<ID3D11ShaderResourceView> _shaderResourceView = nullptr;
+		vector<uint32> _indices;
+		ComPtr<ID3D11Buffer> _indexBuffer = nullptr;
 
-	// [ CPU<->RAM ] [GPU<->VRAM]
+		// VS
+		ComPtr<ID3D11VertexShader> _vertexShader = nullptr;
+		ComPtr<ID3DBlob> _vsBlob = nullptr;
+
+		//RS
+		ComPtr<ID3D11RasterizerState> _rasterizerState = nullptr;
+
+		// PS
+		ComPtr<ID3D11PixelShader> _pixelShader = nullptr;
+		ComPtr<ID3DBlob> _psBlob = nullptr;
+
+		//SRV
+		ComPtr<ID3D11ShaderResourceView> _shaderResourceView = nullptr;
+		ComPtr<ID3D11SamplerState> _samplerState = nullptr;
+		ComPtr<ID3D11BlendState> _blendState = nullptr;
+		// [ CPU<->RAM ] [GPU<->VRAM]
 
 private:
 		TransformData _transformData;

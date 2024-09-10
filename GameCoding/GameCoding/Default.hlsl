@@ -22,7 +22,7 @@ VS_OUTPUT VS(VS_INPUT input)
 		VS_OUTPUT output;
 		output.position = input.position + offset;
 		//output.color    = input.color;
-		output.uv    = input.uv;
+		output.uv = input.uv;
 
 		return output;
 }
